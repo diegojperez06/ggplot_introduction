@@ -1,86 +1,72 @@
-# Hotel-Booking_R
+# ggplot_introduction
 
 ## Table of Content
 
 - [Project Overview](#project-overview)
-- [Datasources](#datasources)
-- [Tools](#tools)
-- [Querying desired data in SQL](#querying-desired-data-in-sql)
-- [Excel Process](#excel-process)
-- [Tableau Dashbaord](#tableau-dashbaord)
+- [Datasource](#datasource)
+- [R Code](#r-code)
 - [Conclusion](#conclusion)
 
-### Project Overview
----
-In this project I work for a hotel booking company and I am tasked with presenting different visualizations to answer a variaty of business questions. To do this, I imported the companies data to RStudios and installed the ggplot2 package to visualize the data. Finally I exported the visualization into a R Markdown notebook to easily share with shareholders.
+## Project Overview
 
-### Datasource
----
+In this project I used RStudios to present different visuals over Palmer Penguins and present them in a clear and professional export using R Markdown. R allows for an effective way to present data analysis findings to shareholders using it's visualizations packages. 
 
-Hotel_bookings.csv: Primary datasource used for this project was downloaded from the internet and loaded into RStudios. 
+## Datasource
 
-### Tools
----
+The Plamer Penguins data source is contained within RStudios as a package. I loaded the data into my enviroment, and analyzed it prior to creating the visuals using differnt functions. Such as view(), colname() and class()
 
-For this activity I used R in RStudios. R offers flexible and straightforward codes through packages for professional data visuals. 
+## R Code
 
-### Code
----
-
-#Importing csv file and saving as a data frame called 'hotel_bookings'
-
-hotel_bookings <- read.csv("hotel_bookings.csv")
-
-   
-
-### Excel Process
----
-
-1. Over four thousand rows were loaded, the easiest way to clean up the data was by pivoting the query.
-
-   - Mismatching customer address were updated
-   - Misspelled words were corrected
-   - Incorrect quantities inputted in databse were corrected.
-  
-2. Once data was cleaned up and ready for use began creating inital dashbaord in Excel. This allows me to have a vision in mind for what the final product should look like.
-   
-3. Created graphs by pivoting different the data in different ways to get all the aspects I wanted in the final dashbaord.
-
-4. Once all the graphs were created, a slcier connection was used to filter all the graphs by year, state or store.
-  
-### Tableau Dashbaord
----
-
-1. Imported the Query from Excel to Tableau.
-   
-2. Built 7 different workbooks to slice up where the revenue was coming from.
-   
-   	-  Revenue Per Year
-   	-  Revenue Per Month
-   	-  Revenue Per State
-   	-  Revenue By Store
-   	-  Revenue By Category
-   	-  Top Customers
-   	-  Revenue by Sales Rep
-  
-3. Created 3 "banner" worksheet to display a general overview of the companies performance over the years using serveral key meterics as a guage.
-  
- 4. Finally dahsboard was created with the ability to filter by year and state to give managment the flexability to display the data however they desired.
+Markdown file has been loaded to the repository dashboard under "__ggplot_intro_pdf__"
 
 
-### Conclusion 
----
+#### *Setting up my enviroment*
+Notes: setting up R enviroment by loading `tidyverse` and 'palmerpenguins' packages
 
-This project consited of working through the data analysis process to answer the business need. I was asked to provide a snapshot of the companies financials over the span of three years. Using the data analysis proces of
+```{r loading packages}
+library (tidyverse)
+library(palmerpenguins)
 
-1. Understanding the problem (no visbaility into revenue drivers)
+```
 
-2. Collect and gather data (qurying desire data from companies databse)
+#### *Visualization*
 
-3. Clean the data
-   
-4. Gather and analyze/visualize the data
-   
-5. Interpret the resutls (create interacgive dashboard to management to make more accurate decisons going forward)
+Displaying series of visualizations.
 
-I helped managment make more infomrmed decisons mnoving forward. 
+#### *Flipper and body mass in green*
+
+Here I displayed the realtionship between flipper length and body mass.
+
+```{r plotting in green}
+
+ggplot(data=penguins,aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(color="green")
+
+```
+
+#### *Flipper and body mass by species*
+
+Flipper length and body mass are broken down by species 
+
+```{r by species}
+
+ggplot(data=penguins,aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(aes(shape=species))
+
+```
+
+#### *Flipper and body mass by species and sex*
+
+Here we plot flipper length and body mass and break it down by species and sex. 
+
+```{r species and sex}
+ggplot(data=penguins,aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(aes(color=species,
+                 shape=species))+
+  facet_wrap(~sex)
+
+```
+
+## Conclusion
+
+In this project I learned to use R's ggplot visualization package to create compelling visuals. The overall goal was to get an understanding and basic learning experience into how I can use RStudios to effectively present data analysis findings. Learning how to use R Markdown allows me to present a data-driven story to shareholders, that can be peer-reviewed by others.  
