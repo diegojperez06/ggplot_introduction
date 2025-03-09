@@ -11,6 +11,8 @@
 
 In this project I used RStudios to present different visuals over Palmer Penguins and present them in a clear and professional export using R Markdown. R allows for an effective way to present data analysis findings to shareholders using it's visualizations packages. 
 
+Final R Markdown linked in file section of this repository.
+
 ## Datasource
 
 The Plamer Penguins data source is contained within RStudios as a package. I loaded the data into my enviroment, and analyzed it prior to creating the visuals using differnt functions. Such as view(), colname() and class()
